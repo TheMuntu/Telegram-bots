@@ -10,7 +10,7 @@ def get_exchange_rate():
     return exchange_rate
 
 def send_message(exchange_rate):
-    # Your bot's token
+    # Your bot's 
     token = "YOUR_BOT_TOKEN"
     # The chat ID of the chat you want to send the message to
     chat_id = "CHAT_ID"
