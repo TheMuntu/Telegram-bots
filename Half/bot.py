@@ -42,8 +42,15 @@ def picture(update, context):
 def sex(update, context):
     sex = update.message.text
     context.user_data['sex'] = sex
+    user_id = update.message.from_user.id
+    name = context.user_data['name']
+    city = context.user_data['city']
+    age = context.user_data['age']
+    picture = context.user_data['picture']
+    sex = context.user_data['sex']
+    c.execute("INSERT INTO profiles VALUES (?,?,?,?,?,?)", (user_id, name, city, age, picture, sex))
+    conn.commit()
     update.message.reply_text("Thanks! You have successfully created your profile!")
-    # Code to save user's profile to a database or file goes here
     return ConversationHandler.END
 
 # Create the ConversationHandler
