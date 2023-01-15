@@ -1,6 +1,16 @@
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+import sqlite3
+
+# Connect to the database
+conn = sqlite3.connect('dating_bot.db')
+c = conn.cursor()
+
+# Create the 'profiles' table if it doesn't exist
+c.execute('''CREATE TABLE IF NOT EXISTS profiles
+             (user_id INTEGER PRIMARY KEY, name TEXT, city TEXT, age INTEGER, picture TEXT, sex TEXT)''')
+
 # Initialize the Telegram bot
 bot = telegram.Bot(token='YOUR_BOT_TOKEN')
 
